@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ShreyJaiswal1/react-portfolio/refs/heads/main/public/frontimg.png" alt="Cortexa Banner" width="100%" />
+</p>
+
 # Lazy Shrey — Portfolio
 
 A modern and interactive portfolio website showcasing my work, skills, and experience as a **Full Stack Developer**.
