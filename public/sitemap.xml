@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <!-- Homepage -->
+    <url>
+        <loc>https://lazyshrey.in/</loc>
+        <lastmod>2026-02-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://raw.githubusercontent.com/ShreyJaiswal1/react-portfolio/refs/heads/main/public/mainpage.png</image:loc>
+            <image:title>Shrey Jaiswal - Full Stack Developer Portfolio</image:title>
+        </image:image>
+    </url>
+
+    <!-- Portfolio sections (all on same page but with anchor links) -->
+    <url>
+        <loc>https://lazyshrey.in/#hero</loc>
+        <lastmod>2026-02-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://lazyshrey.in/#about</loc>
+        <lastmod>2026-02-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://lazyshrey.in/#techstack</loc>
+        <lastmod>2026-02-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://lazyshrey.in/#experience</loc>
+        <lastmod>2026-02-26</lastmod>
+        <changefreq>quarterly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://lazyshrey.in/#projects</loc>
+        <lastmod>2026-02-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://lazyshrey.in/#education</loc>
+        <lastmod>2026-02-26</lastmod>
+        <changefreq>quarterly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://lazyshrey.in/#interests</loc>
+        <lastmod>2026-02-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+</urlset>

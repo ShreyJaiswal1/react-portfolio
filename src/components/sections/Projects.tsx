@@ -9,7 +9,7 @@ import {
   Users,
   Sparkles,
   ChartBar,
-  Workflow
+  Workflow,
 } from 'lucide-react';
 
 interface Project {
@@ -36,9 +36,9 @@ const projects: Project[] = [
     ],
     tech: ['Node.js', 'Llama3.3', 'GroqAI API', 'Forebase', 'Passport.js'],
     github: 'https://github.com/ShreyJaiswal1/aichatbot',
-    demo: 'https://honey.lazyshrey.xyz',
+    demo: 'https://honey.lazyshrey.in',
     icon: <Sparkles className='h-6 w-6' />,
-    stats: "132+ Users"
+    stats: '132+ Users',
   },
   {
     title: 'Krystal Discord Bot',
@@ -75,9 +75,9 @@ const projects: Project[] = [
       'Clerk Authentication',
     ],
     github: 'https://github.com/ShreyJaiswal1/cortexa-datainsight-ai',
-    demo: 'https://cortexa.lazyshrey.xyz/',
+    demo: 'https://cortexa.lazyshrey.in/',
     icon: <ChartBar className='h-6 w-6' />,
-    stats: "73+ Users"
+    stats: '73+ Users',
   },
   {
     title: 'AI Image Workflow Automation',

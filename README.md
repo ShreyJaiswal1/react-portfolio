@@ -7,30 +7,30 @@
 A modern and interactive portfolio website showcasing my work, skills, and experience as a **Full Stack Developer**.
 Built with **React, TypeScript, TailwindCSS, and Framer Motion**, the site focuses on clean design, smooth animations, and glassmorphism-inspired UI.
 
-🔗 **Live Site**: [Visit](https://lazyshrey.xyz)
+🔗 **Live Site**: [Visit](https://lazyshrey.in)
 📂 **Repo URL**: [GitHub Repository](https://github.com/ShreyJaiswal1/react-portfolio)
 
 ---
 
 ## ✨ Features
 
-* 🎨 **Modern UI/UX** with glassmorphism and subtle animations
-* ⚡ **Blazing fast** performance using Vite + React
-* 📱 Fully **responsive design** for all devices
-* 🎬 Smooth **Framer Motion animations**
-* 🧩 Modular, reusable components with **shadcn/ui**
-* 🌑 Support for **dark/light themes**
-* 🚀 Ready for deployment on Vercel, Netlify, or Lovable
+- 🎨 **Modern UI/UX** with glassmorphism and subtle animations
+- ⚡ **Blazing fast** performance using Vite + React
+- 📱 Fully **responsive design** for all devices
+- 🎬 Smooth **Framer Motion animations**
+- 🧩 Modular, reusable components with **shadcn/ui**
+- 🌑 Support for **dark/light themes**
+- 🚀 Ready for deployment on Vercel, Netlify, or Lovable
 
 ---
 
 ## 🛠 Tech Stack
 
-* **Frontend:** React, TypeScript, Vite
-* **Styling:** TailwindCSS, shadcn/ui
-* **Animations:** Framer Motion
-* **Icons:** Lucide React
-* **Deployment:** Vercel
+- **Frontend:** React, TypeScript, Vite
+- **Styling:** TailwindCSS, shadcn/ui
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Deployment:** Vercel
 
 ---
 
@@ -60,9 +60,9 @@ The app will be running at **[http://localhost:5173](http://localhost:5173)** �
 
 This project is ready to deploy on **Lovable**, **Vercel**, or **Netlify**.
 
-* **Lovable:** Click **Share → Publish** in the dashboard.
-* **Vercel/Netlify:** Connect your repo, and they’ll handle CI/CD automatically.
-* **Custom Domain:** Add your domain under project settings.
+- **Lovable:** Click **Share → Publish** in the dashboard.
+- **Vercel/Netlify:** Connect your repo, and they’ll handle CI/CD automatically.
+- **Custom Domain:** Add your domain under project settings.
 
 ---
 
