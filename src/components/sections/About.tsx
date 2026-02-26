@@ -1,154 +1,150 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GlassCard } from '@/components/ui/glass-card';
-import { Code, Lightbulb, Users, BookOpen } from 'lucide-react';
+import { Code, Lightbulb, Users, BookOpen, Rocket, Terminal } from 'lucide-react';
 
 export const About: React.FC = () => {
   return (
-    <section className='py-20 px-4'>
+    <section className='py-32 px-4 md:px-8 relative z-20 bg-background'>
       <div className='max-w-6xl mx-auto'>
+        
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className='text-center mb-12'
+          className='mb-20'
         >
-          <h2 className='text-4xl md:text-5xl font-extrabold bg-gradient-primary bg-clip-text text-transparent mb-4'>
-            About Me
+          <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-foreground bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] mb-6">
+            <Terminal className="h-4 w-4 text-foreground" />
+            <span className="text-sm font-bold tracking-widest uppercase text-foreground">Developer Profile</span>
+          </div>
+          
+          <h2 className='text-5xl md:text-7xl font-black uppercase tracking-tighter text-foreground mb-6'>
+            About Me.
           </h2>
-          <p className='text-foreground-secondary max-w-2xl mx-auto'>
-            I build web apps that solve real problems focused on clarity,
-            reliability, and developer ergonomics.
+          
+          <div className="w-24 h-2 bg-foreground mb-8"></div>
+
+          <p className='text-foreground-secondary text-xl md:text-2xl max-w-3xl leading-relaxed font-medium'>
+            I engineer web applications that solve real-world problems, focusing on clarity, robust architecture, and frictionless user experiences.
           </p>
         </motion.div>
 
-        <div className='grid md:grid-cols-2 gap-8 items-start'>
-          {/* Main card */}
+        {/* Brutalist Bento Grid */}
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto'>
+          
+          {/* Main Large Card */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.75, delay: 0.1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
+            className="md:col-span-2 md:row-span-2"
           >
-            <GlassCard variant='primary' className='h-full'>
-              <div className='space-y-6'>
-                <div className='flex items-center gap-3'>
-                  <div className='p-3 rounded-lg bg-primary/20'>
-                    <Code className='h-6 w-6 text-primary' />
+            <div className='h-full p-8 md:p-12 border-2 border-foreground bg-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] transition-all'>
+              
+              <div className='space-y-8 relative z-10'>
+                <div className='flex items-center gap-5'>
+                  <div className='p-4 border-2 border-foreground bg-foreground text-background'>
+                    <Code className='h-8 w-8' />
                   </div>
-                  <h3 className='text-2xl font-semibold text-foreground'>
-                    Full-Stack Developer
-                  </h3>
-                </div>
-
-                <div className='space-y-3 text-foreground-secondary'>
-                  <p className='text-lg leading-relaxed'>
-                    Hi, I’m Shrey. I spend most of my time building web apps
-                    with the MERN stack and Node.js. Over the years I’ve learned
-                    that code doesn’t have to be flashy to be good — it just
-                    needs to be clear, reliable, and something the next
-                    developer can understand without pulling their hair out.
-                    That’s the kind of work I enjoy.
-                  </p>
-
-                  <p className='text-lg leading-relaxed'>
-                    Lately I’ve been exploring applied AI (small, useful
-                    automations) and shipping dependable features that move
-                    projects forward.
-                  </p>
-
-                  {/* Small stats row — remove if you don't want it */}
-                  <div className='flex gap-4 mt-3 flex-wrap'>
-                    <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/6'>
-                      <span className='font-semibold text-sm text-foreground'>
-                        3+ yrs
-                      </span>
-                      <span className='text-xs text-foreground-secondary'>
-                        experience
-                      </span>
-                    </div>
-                    <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/6'>
-                      <span className='font-semibold text-sm text-foreground'>
-                        10+
-                      </span>
-                      <span className='text-xs text-foreground-secondary'>
-                        projects
-                      </span>
-                    </div>
-                    <div className='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/6'>
-                      <span className='font-semibold text-sm text-foreground'>
-                        OSS
-                      </span>
-                      <span className='text-xs text-foreground-secondary'>
-                        contributions
-                      </span>
-                    </div>
+                  <div>
+                    <h3 className='text-3xl font-black uppercase tracking-tight text-foreground'>
+                      Full-Stack Dev
+                    </h3>
                   </div>
                 </div>
+
+                <div className='space-y-6 text-foreground-secondary text-lg leading-relaxed font-medium'>
+                  <p>
+                    Hi, I’m <span className="text-foreground font-bold">Shrey Jaiswal</span>. I spend my time architecting full-stack applications with the MERN stack, Next.js, and modern AI toolchains. 
+                  </p>
+                  <p>
+                    I believe that exceptional software doesn't just work, it flows. I focus on writing clear, maintainable code that scales, coupled with interfaces that feel alive and intuitive to the user.
+                  </p>
+                  <p>
+                    Currently pushing boundaries in <span className="text-foreground font-bold underline decoration-4 underline-offset-4">Applied AI</span>, creating intelligent automations that save time and empower businesses.
+                  </p>
+                </div>
+
+                {/* Stats row */}
+                <div className='flex gap-4 pt-8 flex-wrap border-t-2 border-foreground/10'>
+                  {[
+                    { label: "Experience", value: "3+ YRS" },
+                    { label: "Shipped", value: "10+ Projects" },
+                    { label: "Contributor", value: "Open Source" }
+                  ].map((stat, i) => (
+                    <div key={i} className='inline-flex flex-col justify-center px-6 py-4 border-2 border-foreground bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]'>
+                      <span className='font-black text-2xl text-foreground uppercase tracking-tight'>{stat.value}</span>
+                      <span className='text-sm text-foreground-secondary font-bold uppercase'>{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </GlassCard>
+            </div>
           </motion.div>
 
-          {/* Feature cards */}
+          {/* Feature Card 1 */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.75, delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className='space-y-5'
+            className="md:col-span-1"
           >
-            <GlassCard variant='secondary' className='p-5'>
-              <div className='flex items-start gap-4'>
-                <div className='p-3 rounded-lg bg-secondary/20'>
-                  <Lightbulb className='h-6 w-6 text-secondary' />
-                </div>
-                <div>
-                  <h4 className='text-lg font-semibold text-foreground mb-1'>
-                    Practical Problem-Solver
-                  </h4>
-                  <p className='text-foreground-secondary'>
-                    I break problems into small, testable pieces then ship
-                    solutions that actually help users.
-                  </p>
-                </div>
+            <div className='h-full p-8 flex flex-col justify-center border-2 border-foreground bg-background shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all'>
+              <div className='p-3 border-2 border-foreground bg-foreground text-background inline-block w-max mb-6'>
+                <Lightbulb className='h-6 w-6' />
               </div>
-            </GlassCard>
-
-            <GlassCard variant='tertiary' className='p-5'>
-              <div className='flex items-start gap-4'>
-                <div className='p-3 rounded-lg bg-accent/20'>
-                  <Users className='h-6 w-6 text-accent' />
-                </div>
-                <div>
-                  <h4 className='text-lg font-semibold text-foreground mb-1'>
-                    Team Player
-                  </h4>
-                  <p className='text-foreground-secondary'>
-                    I communicate clearly, keep code simple, and help teammates
-                    move faster documentation and reviews included.
-                  </p>
-                </div>
-              </div>
-            </GlassCard>
-
-            <GlassCard variant='primary' className='p-5'>
-              <div className='flex items-start gap-4'>
-                <div className='p-3 rounded-lg bg-primary/20'>
-                  <BookOpen className='h-6 w-6 text-primary' />
-                </div>
-                <div>
-                  <h4 className='text-lg font-semibold text-foreground mb-1'>
-                    Continuous Learner
-                  </h4>
-                  <p className='text-foreground-secondary'>
-                    I stay curious and pick up new skills from frameworks to
-                    AI tools to stay adaptable and relevant.
-                  </p>
-                </div>
-              </div>
-            </GlassCard>
+              <h4 className='text-2xl font-black uppercase text-foreground mb-3'>Solver.</h4>
+              <p className='text-foreground-secondary font-medium leading-relaxed'>
+                Breaking down complex architectures into testable, scalable, and extremely elegant systems.
+              </p>
+            </div>
           </motion.div>
+
+          {/* Feature Card 2 */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="md:col-span-1"
+          >
+            <div className='h-full p-8 flex flex-col justify-center border-2 border-foreground bg-foreground text-background shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all'>
+              <div className='p-3 border-2 border-background bg-background text-foreground inline-block w-max mb-6'>
+                <Users className='h-6 w-6' />
+              </div>
+              <h4 className='text-2xl font-black uppercase text-background mb-3'>Team.</h4>
+              <p className='text-background/80 font-medium leading-relaxed'>
+                Communicating clearly, collaborating frictionlessly, and pushing velocity forward.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Feature Card 3 */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="md:col-span-3 lg:col-span-3"
+          >
+             <div className='h-full p-8 lg:p-12 flex flex-col md:flex-row items-center gap-8 border-2 border-foreground bg-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all justify-between'>
+               <div className="flex flex-col md:flex-row items-center md:items-start gap-8 w-full">
+                 <div className='p-6 border-2 border-foreground bg-background shrink-0'>
+                   <Rocket className='h-10 w-10 text-foreground' />
+                 </div>
+                 <div className="text-center md:text-left">
+                   <h4 className='text-3xl font-black uppercase text-foreground mb-4'>Evolution</h4>
+                   <p className='text-foreground-secondary font-medium leading-relaxed text-lg lg:max-w-4xl'>
+                     Technology moves fast. I stay at the absolute frontier whether it's Next.js Server Components, LLM orchestration, or Cloud to guarantee my toolkit is always cutting-edge.
+                   </p>
+                 </div>
+               </div>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navigation from '@/components/ui/Navigation';
 import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
@@ -8,8 +8,16 @@ import { Projects } from '@/components/sections/Projects';
 import { Education } from '@/components/sections/Education';
 import { Interests } from '@/components/sections/Interests';
 import { Footer } from '@/components/sections/Footer';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 const Portfolio: React.FC = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   useEffect(() => {
     // Smooth scrolling behavior
     document.documentElement.style.scrollBehavior = 'smooth';
@@ -20,60 +28,23 @@ const Portfolio: React.FC = () => {
   }, []);
 
   return (
-    <div className='min-h-screen bg-background relative overflow-hidden'>
-      {/* SIMPLE BACKGROUND — replace the complex background blocks with this */}
-      <div aria-hidden className='fixed inset-0 -z-40 pointer-events-none'>
-        {/* base gradient for depth */}
-        <div
-          className='absolute inset-0'
-          style={{
-            background:
-              'linear-gradient(180deg, rgba(6,8,15,0.98), rgba(12,12,16,0.95))',
-          }}
-        />
-
-        {/* left blob (soft, blurred) */}
-        <div
-          className='absolute -left-8 top-12 w-72 h-72 rounded-full blur-3xl'
-          style={{
-            background:
-              'radial-gradient(circle at 30% 30%, rgba(124,131,255,0.16), rgba(6,182,212,0.06) 55%, transparent 70%)',
-            opacity: 0.95,
-            mixBlendMode: 'screen',
-          }}
-        />
-
-        {/* right blob (soft, blurred) */}
-        <div
-          className='absolute -right-6 bottom-14 w-64 h-64 rounded-full blur-3xl'
-          style={{
-            background:
-              'radial-gradient(circle at 65% 35%, rgba(236,72,153,0.10), rgba(124,131,255,0.05) 50%, transparent 70%)',
-            opacity: 0.95,
-            mixBlendMode: 'screen',
-          }}
-        />
-
-        {/* subtle vignette to focus center */}
-        <div
-          className='absolute inset-0'
-          style={{
-            background:
-              'radial-gradient(600px 220px at 50% 36%, rgba(124,131,255,0.03), transparent 26%), linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.16))',
-            mixBlendMode: 'overlay',
-            opacity: 0.95,
-          }}
-        />
-      </div>
-
-      {/* Noise texture overlay for glassmorphism depth */}
-      <div className='fixed inset-0 -z-5 opacity-40 mix-blend-soft-light pointer-events-none'>
-        <div className='absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5' />
+    <div className='min-h-screen bg-background relative selection:bg-foreground selection:text-background'>
+      
+      {/* Scroll Progress Bar - Monochromatic Stark */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-2 bg-foreground origin-left z-[100]"
+        style={{ scaleX }}
+      />
+      
+      {/* Brutalist Base Background */}
+      <div className='fixed inset-0 -z-40 pointer-events-none bg-background'>
+        {/* Subtle grid to emphasize the layout without feeling "glowy" or "AI generated" */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
 
       <Navigation />
 
-      <main>
+      <main className="relative z-10">
         <section id='hero'>
           <Hero />
         </section>

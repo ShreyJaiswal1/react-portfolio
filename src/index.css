@@ -2,64 +2,103 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Glassmorphism Portfolio Design System - All colors, gradients, fonts, effects defined here. 
-All colors MUST be HSL for proper theming.
+/* 
+  Monochromatic / Brutalist Portfolio Design System 
+  Focus on stark contrast, sharp borders, and bold typography.
 */
 
 @layer base {
   :root {
-    /* Glassmorphism Dark Theme Colors */
-    --background: 220 25% 8%;
-    --background-secondary: 220 20% 12%;
-    --foreground: 220 15% 95%;
-    --foreground-secondary: 220 10% 80%;
-
-    /* Glassmorphism Card Colors */
-    --glass-primary: 220 25% 15%;
-    --glass-secondary: 225 30% 20%;
-    --glass-tertiary: 230 35% 25%;
+    /* Neutral Dark Brutalist Theme */
+    --background: 0 0% 12%; /* Neutral Dark Gray */
+    --background-secondary: 0 0% 16%; /* Slightly lighter gray */
     
-    /* Harmonious Glassmorphism Accent Colors */
-    --primary: 240 60% 65%;
-    --primary-glow: 240 70% 75%;
-    --primary-foreground: 220 15% 95%;
+    --foreground: 0 0% 90%; /* Off-white for less eye strain */
+    --foreground-secondary: 0 0% 65%; /* Mid-light Gray */
 
-    --secondary: 260 50% 60%;
-    --secondary-glow: 260 60% 70%;
-    --secondary-foreground: 220 15% 95%;
+    /* Card/Panel Colors */
+    --glass-primary: 0 0% 15%;
+    --glass-secondary: 0 0% 18%;
+    --glass-tertiary: 0 0% 20%;
+    
+    /* Primary Colors (Monochrome Grayscale) */
+    --primary: 0 0% 90%; /* Off-white */
+    --primary-glow: 0 0% 80%; 
+    --primary-foreground: 0 0% 10%; /* Dark Gray */
 
-    --accent: 220 40% 70%;
-    --accent-glow: 220 50% 80%;
-    --accent-foreground: 220 15% 95%;
+    --secondary: 0 0% 70%; 
+    --secondary-glow: 0 0% 60%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 220 15% 40%;
-    --muted-foreground: 220 10% 60%;
+    --accent: 0 0% 100%; /* Pure White */
+    --accent-glow: 0 0% 90%;
+    --accent-foreground: 0 0% 0%; /* Pure Black */
 
-    --destructive: 0 85% 60%;
-    --destructive-foreground: 220 15% 95%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
 
-    /* Glassmorphism Borders & Effects */
-    --border-glass: 220 20% 25%;
-    --border-glow: 230 80% 60%;
-    --input: 220 20% 18%;
-    --ring: 230 80% 60%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --radius: 1rem;
+    /* Sharp Borders & Effects */
+    --border-glass: 0 0% 30%; /* Lighter gray for visible borders */
+    --border-glow: 0 0% 50%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 80%;
 
-    /* Harmonious Custom Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--accent)) 100%);
-    --gradient-glass: linear-gradient(135deg, hsla(var(--glass-primary), 0.6) 0%, hsla(var(--glass-secondary), 0.4) 100%);
-    --gradient-glow: linear-gradient(135deg, hsla(var(--primary-glow), 0.2) 0%, hsla(var(--secondary-glow), 0.2) 100%);
+    --radius: 0rem; /* Hard square corners for brutalist feel */
 
-    /* Enhanced Shadows & Glows for depth */
-    --shadow-glass: 0 8px 32px hsla(var(--primary), 0.12), 0 2px 8px hsla(var(--secondary), 0.08);
-    --shadow-glow: 0 0 40px hsla(var(--primary-glow), 0.25), 0 0 80px hsla(var(--secondary-glow), 0.15);
-    --shadow-hover: 0 16px 48px hsla(var(--primary), 0.2), 0 4px 16px hsla(var(--accent), 0.1);
+    /* Gradients removed, replaced with solid/striped utilities in CSS or Tailwind */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--secondary)) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+    --gradient-glow: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--foreground)) 100%);
 
-    /* Animation Timings */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Brutalist stark offset shadows (using black for deep shadows on dark gray) */
+    --shadow-glass: 6px 6px 0px 0px hsla(0, 0%, 0%, 1);
+    --shadow-glow: 4px 4px 0px 0px hsla(0, 0%, 0%, 1);
+    --shadow-hover: 8px 8px 0px 0px hsla(0, 0%, 0%, 1);
+
+    /* Animation Timings - Sharp and abrupt */
+    --transition-smooth: all 0.2s cubic-bezier(0, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0, 0, 0, 1);
+  }
+
+  .dark {
+    /* Pure Black Dark Mode */
+    --background: 0 0% 3%;
+    --background-secondary: 0 0% 6%;
+    
+    --foreground: 0 0% 98%;
+    --foreground-secondary: 0 0% 65%;
+
+    --glass-primary: 0 0% 5%;
+    --glass-secondary: 0 0% 8%;
+    --glass-tertiary: 0 0% 10%;
+    
+    --primary: 0 0% 98%; 
+    --primary-glow: 0 0% 80%; 
+    --primary-foreground: 0 0% 3%; 
+
+    --secondary: 0 0% 80%;
+    --secondary-glow: 0 0% 70%;
+    --secondary-foreground: 0 0% 3%;
+
+    --accent: 0 0% 100%;
+    --accent-glow: 0 0% 90%;
+    --accent-foreground: 0 0% 0%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --border-glass: 0 0% 25%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 100%;
+
+    /* Invert shadow to white/gray */
+    --shadow-glass: 6px 6px 0px 0px hsla(var(--foreground), 0.8);
+    --shadow-glow: 4px 4px 0px 0px hsla(var(--foreground), 0.8);
+    --shadow-hover: 8px 8px 0px 0px hsla(var(--foreground), 0.9);
   }
 }
 
@@ -70,33 +109,33 @@ All colors MUST be HSL for proper theming.
 
   body {
     @apply bg-background text-foreground font-sans;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    /* Move to a slightly more brutalist/mechanical font stack */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Custom scrollbar */
+  /* Custom scrollbar - Brutalist style */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 12px;
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--background-secondary));
+    background: hsl(var(--background));
+    border-left: 2px solid hsl(var(--foreground));
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary));
-    border-radius: 4px;
+    background: hsl(var(--foreground));
+    border: 2px solid hsl(var(--background));
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary-glow));
+    background: hsl(var(--foreground-secondary));
   }
 
-  /* Glassmorphism utility classes */
-  .glass-effect {
-    backdrop-filter: blur(16px);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+  /* Structural utility classes */
+  .brutalist-border {
+    border: 2px solid hsl(var(--foreground));
   }
 }

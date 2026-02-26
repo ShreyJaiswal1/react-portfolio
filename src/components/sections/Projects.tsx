@@ -1,6 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { GlassCard } from '@/components/ui/glass-card';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import {
   Github,
@@ -27,7 +26,7 @@ const projects: Project[] = [
   {
     title: 'Honey AI',
     description:
-      'An intelligent AI-powered chatbot that provides personalized assistance and automated responses using advanced natural language processing.',
+      'An intelligent AI-powered chatbot that provides personalized assistance and automated responses using advanced natural language processing. Features a fully custom NLP engine with Groq API integration.',
     features: [
       'Natural Language Processing',
       'Context-aware responses',
@@ -43,12 +42,12 @@ const projects: Project[] = [
   {
     title: 'Krystal Discord Bot',
     description:
-      'A feature-rich Discord bot serving over 2 million users with moderation, music, entertainment, and utility commands.',
+      'A feature-rich Discord bot serving over 2 million users bridging communities with advanced moderation, custom music streaming, entertainment mini-games, and utility commands.',
     features: [
       'Advanced moderation system',
       'AI chatbot channel',
-      'Music & entertainment features',
-      'Server analytics',
+      'High fidelity music streaming',
+      'Server analytics & logging',
     ],
     tech: ['Discord.js', 'Node.js', 'MongoDB', 'Lavalink'],
     github: 'https://github.com/ShreyJaiswal1/krystal-discord-bot',
@@ -58,186 +57,185 @@ const projects: Project[] = [
   {
     title: 'Cortexa DataInsight AI',
     description:
-      'A Smart AI-Powered Data Analysis Tool that combines artificial intelligence with intuitive data analysis capabilities.',
+      'A Smart AI-Powered Data Analysis Tool combining artificial intelligence with intuitive data visualization capabilities. It transforms raw data into actionable insights instantly.',
     features: [
-      'Multi-format data support (CSV, Excel, JSON, Parquet)',
-      'Interactive chat interface for data queries',
-      'AI-powered image analysis and recognition',
-      'Real-time analysis with instant insights',
-      'Secure authentication with Clerk',
+      'Multi-format data support (CSV, Excel, JSON)',
+      'Interactive chat interface for queries',
+      'AI-powered image analysis',
+      'Real-time chart generation and insights',
     ],
     tech: [
-      'Next.js 15.5.0',
+      'Next.js 15',
       'Python',
       'Groq AI',
       'Google Gemini',
       'Pandas',
-      'Clerk Authentication',
+      'Clerk Auth',
     ],
     github: 'https://github.com/ShreyJaiswal1/cortexa-datainsight-ai',
     demo: 'https://cortexa.lazyshrey.in/',
     icon: <ChartBar className='h-6 w-6' />,
-    stats: '73+ Users',
+    stats: 'Enterprise Ready',
   },
   {
     title: 'AI Image Workflow Automation',
     description:
-      "An intelligent automation platform that combines n8n workflow automation with Google's Nano Banana (Gemini 2.5 Flash Image) for automated image processing, editing, and analysis workflows.",
+      "An intelligent automation platform orchestrating n8n and Google's Nano Banana (Gemini 2.5 Flash) for hands-free image processing, editing, and content analysis workflows at scale.",
     features: [
-      'Automated image processing workflows with n8n',
-      'Natural language image editing via Nano Banana API',
-      'Real-time image analysis and validation',
-      'Integration with Google Drive and cloud storage',
-      'Custom API endpoints for image operations',
+      'Automated visual pipelines with n8n',
+      'Natural language image editing via API',
+      'Real-time image validation',
+      'Deep integration with Google Workspace',
     ],
     tech: [
       'n8n',
       'Google Nano Banana',
       'Python',
-      'Google Cloud APIs',
       'Webhook Integrations',
-      'REST APIs',
       'Docker',
     ],
     icon: <Workflow className='h-6 w-6' />,
-    stats: 'Auto-processes 100+ images/hour',
+    stats: '100+ tasks/hr',
   },
 ];
 
+const ProjectCard = ({ project, index }: { project: Project, index: number }) => {
+  // Brutalist interaction: slight hard shift instead of 3D tilt
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
+      viewport={{ once: true, margin: "-50px" }}
+      className="h-full"
+    >
+      <div className='h-full flex flex-col p-8 md:p-10 border-2 border-foreground bg-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-200'>
+        
+        <div className='flex items-start justify-between mb-8 border-b-4 border-foreground pb-6'>
+          <div className='flex items-center gap-5 w-full'>
+            <div className='p-4 border-2 border-foreground bg-foreground text-background shrink-0'>
+              {project.icon}
+            </div>
+            <div className="flex-1">
+              <h3 className='text-3xl font-black uppercase tracking-tight text-foreground mb-2'>
+                {project.title}
+              </h3>
+              {project.stats && (
+                <div className='inline-flex items-center gap-2 px-3 py-1 border-2 border-foreground bg-background text-foreground font-bold text-sm uppercase tracking-wider'>
+                  <Users className='h-4 w-4' />
+                  <span>{project.stats}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <p className='text-foreground-secondary text-lg md:text-xl font-medium mb-10 leading-relaxed flex-1'>
+          {project.description}
+        </p>
+
+        <div className='mb-10'>
+          <h4 className='text-foreground font-black mb-4 text-base uppercase tracking-widest border-b-2 border-foreground/20 pb-2 inline-block'>
+            Specs
+          </h4>
+          <ul className='space-y-3'>
+            {project.features.map((feature, featureIndex) => (
+              <li
+                key={featureIndex}
+                className='flex items-start gap-4 text-foreground-secondary font-medium text-base'
+              >
+                <div className='w-3 h-3 bg-foreground mt-1.5 flex-shrink-0 border-2 border-background shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]' />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className='mb-10'>
+          <div className='flex flex-wrap gap-3'>
+            {project.tech.map((tech) => (
+              <span
+                key={tech}
+                className='px-4 py-2 text-sm font-bold uppercase tracking-wider bg-background text-foreground border-2 border-foreground shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className='flex flex-col sm:flex-row gap-4 mt-auto border-t-2 border-foreground/10 pt-8'>
+          {project.github && (
+            <Button
+              variant='outline'
+              size='lg'
+              className='flex-1 h-16 rounded-none border-2 border-foreground bg-background text-foreground hover:bg-foreground hover:text-background font-bold uppercase tracking-widest transition-colors'
+              asChild
+            >
+              <a
+                href={project.github}
+                target='_blank'
+                rel='noopener noreferrer'
+                className="flex justify-center"
+              >
+                <Github className='mr-3 h-5 w-5' />
+                Source
+              </a>
+            </Button>
+          )}
+          {project.demo && (
+            <Button
+              size='lg'
+              className='flex-1 h-16 rounded-none border-2 border-foreground bg-foreground text-background hover:bg-background hover:text-foreground font-bold uppercase tracking-widest transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]'
+              asChild
+            >
+              <a
+                href={project.demo}
+                target='_blank'
+                rel='noopener noreferrer'
+                className="flex justify-center items-center"
+              >
+                Launch
+                <ExternalLink className='ml-3 h-5 w-5' />
+              </a>
+            </Button>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 export const Projects: React.FC = () => {
   return (
-    <section className='py-20 px-4'>
-      <div className='max-w-6xl mx-auto'>
+    <section className='py-32 px-4 md:px-8 relative z-20 bg-background'>
+      <div className='max-w-7xl mx-auto'>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className='text-center mb-16'
+          className='mb-24'
         >
-          <h2 className='text-4xl md:text-5xl font-bold bg-gradient-secondary bg-clip-text text-transparent mb-6'>
-            Featured Projects
+          <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-foreground bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] mb-6">
+            <Sparkles className="h-4 w-4 text-foreground" />
+            <span className="text-sm font-bold tracking-widest uppercase text-foreground">Archive</span>
+          </div>
+          
+          <h2 className='text-5xl md:text-7xl font-black uppercase tracking-tighter text-foreground mb-6'>
+            Featured Work.
           </h2>
-          <p className='text-foreground-secondary text-lg max-w-2xl mx-auto'>
-            A showcase of my recent work and contributions to the developer
-            community
+          
+          <div className="w-24 h-2 bg-foreground mb-8"></div>
+
+          <p className='text-foreground-secondary text-xl md:text-2xl max-w-3xl leading-relaxed font-medium'>
+            A selection of my best projects, blending complex backends with stunning, immersive frontends.
           </p>
         </motion.div>
 
-        <div className='grid md:grid-cols-2 gap-8'>
+        <div className='grid md:grid-cols-2 gap-8 lg:gap-12'>
           {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.2,
-                ease: 'easeOut',
-              }}
-              viewport={{ once: true }}
-            >
-              <GlassCard
-                variant='primary'
-                className='h-full group relative overflow-hidden'
-                hover={true}
-              >
-                {/* Hover glow effect */}
-                <div className='absolute inset-0 bg-gradient-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10'></div>
-
-                <div className='relative z-10'>
-                  <div className='flex items-center justify-between mb-4'>
-                    <div className='flex items-center gap-3'>
-                      <div className='p-3 rounded-lg bg-primary/20 text-primary'>
-                        {project.icon}
-                      </div>
-                      <div>
-                        <h3 className='text-2xl font-bold text-foreground'>
-                          {project.title}
-                        </h3>
-                        {project.stats && (
-                          <div className='flex items-center gap-2 text-accent text-sm'>
-                            <Users className='h-4 w-4' />
-                            <span>{project.stats}</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className='text-foreground-secondary mb-6 leading-relaxed'>
-                    {project.description}
-                  </p>
-
-                  <div className='mb-6'>
-                    <h4 className='text-foreground font-semibold mb-3'>
-                      Key Features:
-                    </h4>
-                    <ul className='space-y-2'>
-                      {project.features.map((feature, featureIndex) => (
-                        <li
-                          key={featureIndex}
-                          className='flex items-start gap-2 text-foreground-secondary'
-                        >
-                          <span className='w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0'></span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className='mb-6'>
-                    <div className='flex flex-wrap gap-2'>
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className='px-3 py-1 text-xs rounded-full bg-glass-secondary/50 text-foreground-secondary border border-primary/20'
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className='flex gap-3'>
-                    {project.github && (
-                      <Button
-                        variant='outline'
-                        size='sm'
-                        className='bg-glass-primary/50 border-primary/30 hover:bg-primary/20 backdrop-blur-glass'
-                        asChild
-                      >
-                        <a
-                          href={project.github}
-                          target='_blank'
-                          rel='noopener noreferrer'
-                        >
-                          <Github className='mr-2 h-4 w-4' />
-                          GitHub
-                        </a>
-                      </Button>
-                    )}
-                    {project.demo && (
-                      <Button
-                        variant='outline'
-                        size='sm'
-                        className='bg-glass-primary/50 border-accent/30 hover:bg-accent/20 backdrop-blur-glass'
-                        asChild
-                      >
-                        <a
-                          href={project.demo}
-                          target='_blank'
-                          rel='noopener noreferrer'
-                        >
-                          <ExternalLink className='mr-2 h-4 w-4' />
-                          Live Demo
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </GlassCard>
-            </motion.div>
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
       </div>

@@ -1,84 +1,106 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { GlassCard } from '@/components/ui/glass-card';
-import { GraduationCap, Calendar } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { GraduationCap, Calendar, Trophy, BookOpen } from 'lucide-react';
 
 export const Education: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "center center"]
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-32 px-4 relative z-20 bg-background border-b-2 border-foreground/10">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 flex flex-col items-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-6">
-            Education
+          <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-foreground bg-foreground text-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] mb-6">
+            <BookOpen className="h-4 w-4 text-background" />
+            <span className="text-sm font-bold tracking-widest uppercase">Academics</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-foreground mb-6">
+            Education.
           </h2>
+          <div className="w-24 h-2 bg-foreground mb-8"></div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
+          ref={containerRef}
+          style={{ scale, opacity }}
+          className="relative max-w-5xl mx-auto"
         >
-          <GlassCard variant="secondary" className="relative">
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-secondary flex items-center justify-center">
-                <GraduationCap className="h-8 w-8 text-white" />
+          <div className="relative p-10 md:p-14 border-2 border-foreground bg-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] transition-all duration-300">
+            
+            <div className="flex flex-col md:flex-row md:items-start gap-12 relative z-10">
+              
+              <div className="flex-shrink-0 w-24 h-24 border-2 border-foreground bg-foreground flex items-center justify-center">
+                <GraduationCap className="h-12 w-12 text-background" />
               </div>
               
               <div className="flex-1">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between mb-8 gap-6 border-b-4 border-foreground pb-6">
                   <div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
-                      Bachelor of Computer Applications (BCA)
+                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-foreground mb-4">
+                      Bachelor of Computer App.
                     </h3>
-                    <p className="text-secondary text-lg font-semibold">
+                    <p className="text-foreground-secondary text-2xl font-bold tracking-widest uppercase">
                       United University
                     </p>
                   </div>
                   
-                  <div className="flex items-center gap-2 text-foreground-secondary mt-2 md:mt-0">
-                    <Calendar className="h-4 w-4" />
-                    <span className="text-lg">2023 - 2026</span>
+                  <div className="flex items-center gap-3 px-6 py-3 border-2 border-foreground bg-background w-max h-max shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
+                    <Calendar className="h-6 w-6 text-foreground" />
+                    <span className="text-xl font-black tracking-widest uppercase text-foreground">2023 - 2026</span>
                   </div>
                 </div>
                 
-                <div className="space-y-3 text-foreground-secondary">
-                  <p className="leading-relaxed text-lg">
-                    Pursuing comprehensive computer science education with focus on software development, 
-                    database management, and emerging technologies.
-                  </p>
+                <p className="text-foreground text-xl md:text-2xl leading-relaxed mb-12 font-medium">
+                  Pursuing a comprehensive computer science education with a profound focus on modern software engineering paradigms, distributed architectures, and scalable web technologies.
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-6 p-8 border-2 border-foreground bg-background">
+                    <div className="flex items-center gap-4 mb-4 border-b-2 border-foreground/20 pb-4">
+                      <Trophy className="h-6 w-6 text-foreground" />
+                      <h4 className="text-foreground font-black text-xl uppercase tracking-widest">Core Studies</h4>
+                    </div>
+                    <ul className="space-y-4 text-foreground-secondary">
+                      {['Data Structures & Algorithms', 'Object-Oriented Architecture', 'Database Management', 'Full-Stack Web Dev'].map((item, i) => (
+                        <li key={i} className="flex items-start gap-4">
+                          <div className="w-3 h-3 bg-foreground mt-2 border-2 border-background shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)] flex-shrink-0" />
+                          <span className="font-bold text-lg">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                   
-                  <div className="grid md:grid-cols-2 gap-4 mt-6">
-                    <div className="space-y-2">
-                      <h4 className="text-foreground font-semibold">Core Subjects:</h4>
-                      <ul className="space-y-1 text-sm">
-                        <li>• Data Structures & Algorithms</li>
-                        <li>• Object-Oriented Programming</li>
-                        <li>• Database Management Systems</li>
-                        <li>• Web Development</li>
-                      </ul>
+                  <div className="space-y-6 p-8 border-2 border-foreground bg-background">
+                    <div className="flex items-center gap-4 mb-4 border-b-2 border-foreground/20 pb-4">
+                      <BookOpen className="h-6 w-6 text-foreground" />
+                      <h4 className="text-foreground font-black text-xl uppercase tracking-widest">Specializations</h4>
                     </div>
-                    
-                    <div className="space-y-2">
-                      <h4 className="text-foreground font-semibold">Specializations:</h4>
-                      <ul className="space-y-1 text-sm">
-                        <li>• Full Stack Development</li>
-                        <li>• Software Engineering</li>
-                        <li>• System Design</li>
-                        <li>• AI/ML Fundamentals</li>
-                      </ul>
-                    </div>
+                    <ul className="space-y-4 text-foreground-secondary">
+                      {['Advanced UI/UX Engineering', 'Systems Design', 'Cloud Deployment Strategy', 'AI & ML Integrations'].map((item, i) => (
+                        <li key={i} className="flex items-start gap-4">
+                          <div className="w-3 h-3 bg-foreground mt-2 border-2 border-background shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)] flex-shrink-0" />
+                          <span className="font-bold text-lg">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
+
               </div>
             </div>
-          </GlassCard>
+          </div>
         </motion.div>
       </div>
     </section>

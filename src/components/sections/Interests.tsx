@@ -1,114 +1,98 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GlassCard } from '@/components/ui/glass-card';
-import { Music, Gamepad2, Brain, Coffee, Camera, BookOpen } from 'lucide-react';
+import { Music, Gamepad2, Brain, Coffee, Camera, BookOpen, Compass } from 'lucide-react';
 
 const interests = [
   {
     name: 'Guitar',
     icon: Music,
-    description: 'Creating melodies and exploring different musical styles',
-    color: 'text-purple-400',
+    description: 'Composing melodies and exploring the intricacies of acoustics and rhythm.',
   },
   {
     name: 'Gaming',
     icon: Gamepad2,
-    description: 'Strategy games and competitive gaming experiences',
-    color: 'text-blue-400',
+    description: 'Immersing in grand strategy and competitive mechanics.',
   },
   {
-    name: 'AI Tools',
+    name: 'AI Automation',
     icon: Brain,
-    description: 'Experimenting with cutting-edge AI technologies',
-    color: 'text-green-400',
+    description: 'Orchestrating agents and experimenting with bleeding-edge LLM models.',
   },
   {
-    name: 'Coffee',
+    name: 'Specialty Coffee',
     icon: Coffee,
-    description: 'Fuel for late-night coding sessions',
-    color: 'text-amber-400',
+    description: 'The science of extraction and the ultimate fuel for engineering.',
   },
   {
     name: 'Photography',
     icon: Camera,
-    description: 'Capturing moments and exploring visual storytelling',
-    color: 'text-cyan-400',
+    description: 'Capturing light, framing narratives, and observing the extraordinary.',
   },
   {
-    name: 'Learning',
+    name: 'Deep Learning',
     icon: BookOpen,
-    description: 'Continuous learning and skill development',
-    color: 'text-orange-400',
+    description: 'Constantly absorbing new paradigms, from philosophy to quantum computing.',
   },
 ];
 
 export const Interests: React.FC = () => {
   return (
-    <section className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-32 px-4 relative z-20 bg-background">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20 flex flex-col items-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-secondary bg-clip-text text-transparent mb-6">
-            Interests & Hobbies
+          <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-foreground bg-foreground text-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] mb-6">
+            <Compass className="h-4 w-4 text-background" />
+            <span className="text-sm font-bold tracking-widest uppercase">Pursuits</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-foreground mb-6">
+            Dimensions.
           </h2>
-          <p className="text-foreground-secondary text-lg max-w-2xl mx-auto">
-            Beyond coding, here's what keeps me inspired and motivated
+          <div className="w-24 h-2 bg-foreground mb-8"></div>
+          <p className="text-foreground-secondary text-xl md:text-2xl max-w-3xl mx-auto font-medium leading-relaxed">
+            The passions and pursuits that keep me inspired off the keyboard, fueling creativity and perspective.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {interests.map((interest, index) => (
             <motion.div
               key={interest.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ 
-                duration: 0.6, 
+                duration: 0.5, 
                 delay: index * 0.1,
-                ease: "easeOut" 
+                ease: "easeOut"
               }}
               viewport={{ once: true }}
-              whileHover={{ 
-                scale: 1.05,
-                rotateY: 5,
-              }}
+              className="h-full"
             >
-              <GlassCard 
-                variant="tertiary" 
-                className="text-center group cursor-pointer h-48 flex flex-col items-center justify-center relative overflow-hidden"
+              <div 
+                className="h-full text-center group cursor-pointer p-10 flex flex-col items-center justify-center relative border-2 border-foreground bg-background shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all duration-300"
               >
-                {/* Animated background on hover */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-glow opacity-0 group-hover:opacity-30 transition-opacity duration-500"
-                  whileHover={{ scale: 1.1 }}
-                />
                 
-                <div className="relative z-10 flex flex-col items-center">
-                  <motion.div
-                    className={`p-4 rounded-full bg-glass-primary/30 mb-4 ${interest.color}`}
-                    whileHover={{ 
-                      scale: 1.2,
-                      rotate: 10,
-                    }}
-                    transition={{ duration: 0.3 }}
+                <div className="relative z-10 flex flex-col items-center w-full">
+                  <div
+                    className="p-6 mb-8 border-2 border-foreground bg-background group-hover:bg-foreground group-hover:text-background transition-colors duration-300"
                   >
-                    <interest.icon className="h-8 w-8" />
-                  </motion.div>
+                    <interest.icon className="h-10 w-10 text-foreground group-hover:text-background transition-colors duration-300" />
+                  </div>
                   
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                  <h3 className="text-2xl font-black uppercase text-foreground mb-4 tracking-tighter w-full border-b-2 border-foreground/10 pb-4">
                     {interest.name}
                   </h3>
                   
-                  <p className="text-foreground-secondary text-sm text-center px-2">
+                  <p className="text-foreground-secondary text-base md:text-lg text-center leading-relaxed font-medium">
                     {interest.description}
                   </p>
                 </div>
-              </GlassCard>
+              </div>
             </motion.div>
           ))}
         </div>

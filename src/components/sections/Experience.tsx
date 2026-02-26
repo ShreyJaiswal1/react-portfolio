@@ -1,92 +1,146 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { GlassCard } from '@/components/ui/glass-card';
-import { Calendar, MapPin, Building2 } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Calendar, MapPin, Building2, Briefcase } from 'lucide-react';
+
+const experiences = [
+  {
+    id: 1,
+    role: 'Backend Developer Intern',
+    company: 'Digisec',
+    location: 'Noida, IN',
+    period: 'Nov 2024 - Mar 2025',
+    description: 'Developed and maintained scalable backend systems using Node.js and Express.js, serving thousands of users with high performance and reliability.',
+    achievements: [
+      'Built RESTful APIs and microservices architecture',
+      'Optimized database queries and improved system performance by 40%',
+      'Implemented security best practices and data protection measures',
+      'Collaborated with cross-functional teams in agile development environment'
+    ]
+  },
+  {
+    id: 2,
+    role: 'Full Stack React Developer',
+    company: 'Freelance',
+    location: 'Remote',
+    period: '2023 - Present',
+    description: 'Designing and building premium web applications for various clients. Focusing on highly interactive, brutalist user interfaces.',
+    achievements: [
+      'Created animated, high-performance web experiences using React and Framer Motion',
+      'Built responsive designs that work flawlessly across all devices',
+      'Integrated complex APIs and third-party services'
+    ]
+  }
+];
 
 export const Experience: React.FC = () => {
-  return (
-    <section className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-6">
-            Experience
-          </h2>
-        </motion.div>
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <GlassCard variant="primary" className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-6 top-16 bottom-6 w-0.5 bg-gradient-primary opacity-50"></div>
-            
-            <div className="flex items-start gap-6">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center">
-                <Building2 className="h-6 w-6 text-white" />
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+
+  return (
+    <section ref={containerRef} className="py-32 px-4 relative min-h-[120vh] bg-background">
+      <div className="max-w-6xl mx-auto">
+        
+        <div className="flex flex-col lg:flex-row gap-16 relative items-start">
+          
+          {/* Sticky Left Section */}
+          <div className="lg:w-1/3 lg:sticky lg:top-32 z-10">
+            <motion.div style={{ opacity }}>
+              <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-foreground bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] mb-6">
+                <Briefcase className="h-4 w-4 text-foreground" />
+                <span className="text-sm font-bold tracking-widest uppercase text-foreground">Timeline</span>
               </div>
+
+              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-foreground mb-6">
+                Exp.
+              </h2>
               
-              <div className="flex-1">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-foreground mb-1">
-                      Backend Developer Intern
-                    </h3>
-                    <p className="text-primary text-lg font-semibold">
-                      Digisec - Noida, IN
-                    </p>
-                  </div>
-                  
-                  <div className="flex flex-col md:items-end text-sm text-foreground-secondary mt-2 md:mt-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Calendar className="h-4 w-4" />
-                      <span>November 2024 - March 2024</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4" />
-                      <span>Remote</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="space-y-3 text-foreground-secondary">
-                  <p className="leading-relaxed">
-                    Developed and maintained scalable backend systems using Node.js and Express.js, 
-                    serving thousands of users with high performance and reliability.
-                  </p>
-                  
-                  <ul className="space-y-2 ml-4">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                      <span>Built RESTful APIs and microservices architecture</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                      <span>Optimized database queries and improved system performance by 40%</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                      <span>Implemented security best practices and data protection measures</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                      <span>Collaborated with cross-functional teams in agile development environment</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </GlassCard>
-        </motion.div>
+              <div className="w-24 h-2 bg-foreground mb-8"></div>
+
+              <p className="text-foreground-secondary text-xl md:text-2xl mb-8 leading-relaxed font-medium">
+                My professional journey and the technical roles I've taken on to build exceptional products.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Scrolling Right Section */}
+          <div className="lg:w-2/3 space-y-16 lg:space-y-40 mt-12 lg:mt-0">
+            {experiences.map((exp, index) => (
+              <ExperienceCard key={exp.id} exp={exp} index={index} />
+            ))}
+          </div>
+
+        </div>
       </div>
     </section>
+  );
+};
+
+// Extracted Component for individual sticky-scroll cards
+const ExperienceCard = ({ exp, index }: { exp: any, index: number }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start 90%", "center center"]
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+
+  return (
+    <motion.div
+      ref={cardRef}
+      style={{ scale, opacity }}
+      className="relative z-20 origin-center"
+    >
+      <div className="relative p-8 md:p-12 border-2 border-foreground bg-background shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] transition-all duration-300">
+        
+        <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-8 relative z-10">
+          <div className="flex-1">
+            <div className="flex items-center gap-5 mb-8 border-b-2 border-foreground/10 pb-6">
+              <div className="w-16 h-16 border-2 border-foreground bg-foreground text-background flex items-center justify-center shrink-0">
+                <Building2 className="h-8 w-8" />
+              </div>
+              <div>
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-foreground mb-1">
+                  {exp.role}
+                </h3>
+                <p className="text-lg md:text-xl font-bold text-foreground-secondary uppercase tracking-widest">
+                  {exp.company}
+                </p>
+              </div>
+            </div>
+            
+            <p className="text-foreground text-lg md:text-xl leading-relaxed font-medium mb-8">
+              {exp.description}
+            </p>
+            
+            <ul className="space-y-4">
+              {exp.achievements.map((item: string, i: number) => (
+                <li key={i} className="flex items-start gap-4">
+                  <div className="w-3 h-3 bg-foreground mt-2 shrink-0 border-2 border-background shadow-[2px_2px_0px_0px_rgba(0,0,0,0.5)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]" />
+                  <span className="text-foreground-secondary font-medium leading-relaxed text-base md:text-lg">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="flex flex-col gap-5 mt-8 xl:mt-0 xl:items-end text-sm text-foreground font-bold shrink-0 border-2 border-foreground bg-background p-6">
+            <div className="flex items-center gap-4">
+              <Calendar className="h-6 w-6 text-foreground" />
+              <span className="text-lg uppercase tracking-wider">{exp.period}</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <MapPin className="h-6 w-6 text-foreground" />
+              <span className="text-lg uppercase tracking-wider">{exp.location}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Github, Linkedin, Mail, ArrowUp, Heart } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail, ArrowUp, Sparkles } from 'lucide-react';
 import { SiDiscord } from 'react-icons/si';
 
 export const Footer: React.FC = () => {
@@ -13,87 +14,95 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className='w-full mt-12 mb-10'>
-      <div className='max-w-6xl mx-auto px-6'>
-        <div className='flex flex-col md:flex-row items-center justify-between gap-4'>
-          {/* Left: author + short note */}
-          <div className='flex items-center gap-3'>
+    <footer className='w-full pt-20 pb-10 relative overflow-hidden bg-background border-t-2 border-foreground'>
+      <div className='max-w-7xl mx-auto px-6 relative z-10'>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center mb-16 text-center"
+        >
+          <div className="inline-flex items-center gap-3 px-4 py-2 border-2 border-foreground bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] mb-8">
+            <Sparkles className="h-4 w-4 text-foreground" />
+            <span className="text-sm font-bold tracking-widest uppercase">Let's build</span>
+          </div>
+          
+          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-foreground mb-8">
+            Start a Project.
+          </h2>
+          
+          <p className="text-foreground-secondary text-xl max-w-2xl mx-auto font-medium leading-relaxed mb-10">
+            Whether you have a spark of an idea or a fully fleshed-out vision, I'd love to help you bring it to life with precision and style.
+          </p>
+
+          <a 
+            href="mailto:5aprilshrey@gmail.com"
+            className="inline-flex items-center justify-center px-10 py-5 text-xl font-black uppercase tracking-widest text-background bg-foreground border-2 border-foreground hover:bg-background hover:text-foreground transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
+          >
+            <Mail className="w-6 h-6 mr-4" />
+            Get in touch
+          </a>
+        </motion.div>
+
+        <div className="w-full h-1 bg-foreground mb-10" />
+
+        <div className='flex flex-col md:flex-row items-center justify-between gap-8'>
+          
+          {/* Left: Branding & Copyright */}
+          <div className='flex flex-col md:flex-row items-center gap-4 text-center md:text-left'>
             <div
-              className='inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/6 backdrop-blur-md border border-white/6 shadow-sm'
+              className='inline-flex items-center gap-2'
               aria-hidden
             >
-              <Heart className='h-4 w-4 text-pink-400' />
-              <span className='text-sm text-slate-300'>Made with care by</span>
-              <a
-                href='#hero'
+              <span className='text-sm font-bold uppercase tracking-widest text-foreground'>Engineered by</span>
+              <button
                 onClick={scrollToTop}
-                className='ml-1 font-medium text-slate-100 hover:underline focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/40 rounded'
+                className='font-black text-foreground hover:bg-foreground hover:text-background px-2 transition-colors'
               >
-                Shrey Jaiswal
-              </a>
+                SHREY JAISWAL
+              </button>
             </div>
 
-            <span className='text-xs text-slate-400 hidden sm:inline'>•</span>
+            <span className='text-xs text-foreground hidden md:inline'>|</span>
 
-            <div className='text-xs text-slate-400 ml-2'>
-              © {year} Shrey Jaiswal
+            <div className='text-sm font-bold uppercase tracking-widest text-foreground-secondary'>
+              © {year} ALL RIGHTS RESERVED
             </div>
           </div>
-          {/* Right: social icons + back-to-top */}
-          <div className='flex items-center gap-3'>
-            <a
-              href='https://github.com/ShreyJaiswal1'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='GitHub'
-              className='inline-flex items-center justify-center p-2 rounded-md bg-white/4 hover:bg-white/6 transition'
-            >
-              <Github className='h-5 w-5 text-slate-200' />
-            </a>
-
-            <a
-              href='https://linkedin.com/in/shreyjaiswal1'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='LinkedIn'
-              className='inline-flex items-center justify-center p-2 rounded-md bg-white/4 hover:bg-white/6 transition'
-            >
-              <Linkedin className='h-5 w-5 text-slate-200' />
-            </a>
-            <a
-              href='https://discord.gg/ZVCB8EnRX2'
-              target='_blank'
-              rel='noopener noreferrer'
-              aria-label='GitHub'
-              className='inline-flex items-center justify-center p-2 rounded-md bg-white/4 hover:bg-white/6 transition'
-            >
-              <SiDiscord className='h-5 w-5 text-slate-200' />
-            </a>
-
-
-            <a
-              href='mailto:5aprilshrey@gmail.com'
-              aria-label='Email'
-              className='inline-flex items-center justify-center p-2 rounded-md bg-white/4 hover:bg-white/6 transition'
-            >
-              <Mail className='h-5 w-5 text-slate-200' />
-            </a>
+          
+          {/* Right: Social icons + Back-to-top */}
+          <div className='flex items-center gap-4'>
+            {[
+              { icon: Github, href: 'https://github.com/ShreyJaiswal1', label: 'GitHub' },
+              { icon: Linkedin, href: 'https://linkedin.com/in/shreyjaiswal1', label: 'LinkedIn' },
+              { icon: SiDiscord, href: 'https://discord.gg/ZVCB8EnRX2', label: 'Discord' },
+            ].map((social, idx) => (
+              <a
+                key={idx}
+                href={social.href}
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label={social.label}
+                className='inline-flex items-center justify-center w-12 h-12 border-2 border-foreground bg-background text-foreground hover:bg-foreground hover:text-background transition-colors'
+              >
+                <social.icon className='h-5 w-5' />
+              </a>
+            ))}
 
             <button
               onClick={scrollToTop}
               aria-label='Back to top'
-              className='ml-2 inline-flex items-center justify-center h-9 w-9 rounded-full bg-white/4 hover:bg-white/8 shadow-sm transition transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/30'
+              className='ml-4 inline-flex items-center justify-center w-12 h-12 border-2 border-foreground bg-foreground text-background hover:bg-background hover:text-foreground shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-all focus:outline-none'
               title='Back to top'
             >
-              <ArrowUp className='h-4 w-4 text-slate-100' />
+              <ArrowUp className='h-6 w-6' />
             </button>
           </div>
         </div>
 
-        {/* Optional small caption */}
       </div>
     </footer>
   );
 };
-
-export default Footer;
