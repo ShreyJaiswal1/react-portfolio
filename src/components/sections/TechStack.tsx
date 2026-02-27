@@ -81,9 +81,6 @@ export const TechStack: React.FC = () => {
 
       <div className='flex flex-col gap-8 relative z-10'>
         
-        {/* Stark masking edges instead of soft gradients */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-background border-r-4 border-foreground z-20 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-background border-l-4 border-foreground z-20 pointer-events-none" />
 
         {/* First Marquee - Moving Left */}
         <div className="flex w-[200vw] sm:w-max group">
@@ -103,11 +100,10 @@ export const TechStack: React.FC = () => {
         </div>
 
         {/* Second Marquee - Moving Right */}
-        <div className="flex w-[200vw] sm:w-max group translate-x-[calc(-50%)]">
+        <div className="flex w-[200vw] sm:w-max group">
           <motion.div
             className="flex gap-6 pr-6 w-max"
-            initial={{ x: "-50%" }}
-            animate={{ x: [ "-50%", 0 ] }}
+            animate={{ x: ["-50%", 0] }}
             transition={{
               duration: 35, // Slightly different speed
               ease: "linear",
