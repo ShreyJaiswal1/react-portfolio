@@ -4,11 +4,12 @@ import { Button } from '@/components/ui/button';
 import {
   Github,
   ExternalLink,
-  Bot,
   Users,
   Sparkles,
   ChartBar,
   Workflow,
+  Headphones,
+  Cat,
 } from 'lucide-react';
 
 interface Project {
@@ -23,6 +24,29 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    title: 'Melofy',
+    description:
+      'A premium, high-performance music streaming platform designed for a social and immersive auditory experience. Features real-time shared listening, Hi-Fi audio support, and a sleek, minimalist dark-mode aesthetic.',
+    features: [
+      'Real-time Listen Along social sessions',
+      'High-Fidelity (Hi-Fi) lossless audio',
+      'Cross-device synchronization',
+      'Interactive synced lyrics & PiP mode',
+    ],
+    tech: [
+      'Next.js 15',
+      'TypeScript',
+      'Tailwind CSS',
+      'Firebase',
+      'Upstash Redis',
+      'Socket.io',
+    ],
+    github: 'https://github.com/ShreyJaiswal1/melofy',
+    demo: 'https://melofy.jene.in',
+    icon: <Headphones className='h-6 w-6' />,
+    stats: '100M+ Tracks',
+  },
   {
     title: 'Honey AI',
     description:
@@ -40,19 +64,20 @@ const projects: Project[] = [
     stats: '132+ Users',
   },
   {
-    title: 'Krystal Discord Bot',
+    title: 'Meowuwu',
     description:
-      'A feature-rich Discord bot serving over 2 million users bridging communities with advanced moderation, custom music streaming, entertainment mini-games, and utility commands.',
+      'A delightful, cat-themed "link-in-bio" platform and aesthetic alternative to Linktree. It allows creators and artists to build personality-filled link cards with playful motifs and modern pastel themes.',
     features: [
-      'Advanced moderation system',
-      'AI chatbot channel',
-      'High fidelity music streaming',
-      'Server analytics & logging',
+      'Custom link cards with unique icons',
+      'Aesthetic cat-themed pastel designs',
+      'Purr-fect analytics for link tracking',
+      'Mobile-optimized responsive experience',
     ],
-    tech: ['Discord.js', 'Node.js', 'MongoDB', 'Lavalink'],
-    github: 'https://github.com/ShreyJaiswal1/krystal-discord-bot',
-    icon: <Bot className='h-6 w-6' />,
-    stats: '2M+ Users',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'MongoDB'],
+    github: 'https://github.com/ShreyJaiswal1/meowuwu',
+    demo: 'https://meowuwu.in',
+    icon: <Cat className='h-6 w-6' />,
+    stats: 'The Cuter Link',
   },
   {
     title: 'Cortexa DataInsight AI',
@@ -76,26 +101,6 @@ const projects: Project[] = [
     demo: 'https://cortexa.lazyshrey.in/',
     icon: <ChartBar className='h-6 w-6' />,
     stats: 'Enterprise Ready',
-  },
-  {
-    title: 'AI Image Workflow Automation',
-    description:
-      "An intelligent automation platform orchestrating n8n and Google's Nano Banana (Gemini 2.5 Flash) for hands-free image processing, editing, and content analysis workflows at scale.",
-    features: [
-      'Automated visual pipelines with n8n',
-      'Natural language image editing via API',
-      'Real-time image validation',
-      'Deep integration with Google Workspace',
-    ],
-    tech: [
-      'n8n',
-      'Google Nano Banana',
-      'Python',
-      'Webhook Integrations',
-      'Docker',
-    ],
-    icon: <Workflow className='h-6 w-6' />,
-    stats: '100+ tasks/hr',
   },
 ];
 

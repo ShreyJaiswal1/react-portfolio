@@ -20,7 +20,9 @@ import {
   SiTailwindcss,
   SiNextdotjs,
   SiFramer,
-  SiVite
+  SiVite,
+  SiRedis,
+  SiSocketdotio
 } from 'react-icons/si';
 
 // First row of technologies going left
@@ -31,6 +33,7 @@ const techRow1 = [
   { name: 'Next.js', icon: <SiNextdotjs /> },
   { name: 'Node.js', icon: <SiNodedotjs /> },
   { name: 'Express', icon: <SiExpress /> },
+  { name: 'Socket.io', icon: <SiSocketdotio /> },
   { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
   { name: 'Framer', icon: <SiFramer /> },
   { name: 'Vite', icon: <SiVite /> },
@@ -41,6 +44,7 @@ const techRow1 = [
 const techRow2 = [
   { name: 'Python', icon: <SiPython /> },
   { name: 'MongoDB', icon: <SiMongodb /> },
+  { name: 'Redis', icon: <SiRedis /> },
   { name: 'SQL', icon: <SiMysql /> },
   { name: 'Docker', icon: <SiDocker /> },
   { name: 'Google Cloud', icon: <SiGooglecloud /> },
