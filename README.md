@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ShreyJaiswal1/react-portfolio/refs/heads/main/public/frontimg.png" alt="Cortexa Banner" width="100%" />
+  <img src="https://raw.githubusercontent.com/ShreyJaiswal1/react-portfolio/refs/heads/main/public/shrey_banner.png" alt="Shrey Banner" width="100%" />
 </p>
 
 # Lazy Shrey Portfolio
