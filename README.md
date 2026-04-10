@@ -2,13 +2,19 @@
   <img src="https://raw.githubusercontent.com/ShreyJaiswal1/react-portfolio/refs/heads/main/public/frontimg.png" alt="Cortexa Banner" width="100%" />
 </p>
 
-# Lazy Shrey — Portfolio
+# Lazy Shrey Portfolio
 
 A modern and interactive portfolio website showcasing my work, skills, and experience as a **Full Stack Developer**.
 Built with **React, TypeScript, TailwindCSS, and Framer Motion**, the site focuses on clean design, smooth animations, and glassmorphism-inspired UI.
 
 🔗 **Live Site**: [Visit](https://lazyshrey.in)
 📂 **Repo URL**: [GitHub Repository](https://github.com/ShreyJaiswal1/react-portfolio)
+
+<p align="center">
+  <a href="https://payments.cashfree.com/forms/shrey" target="_blank">
+    <img src="https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee" />
+  </a>
+</p>
 
 ---
 
