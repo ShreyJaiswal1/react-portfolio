@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { AnimatedText } from '@/components/ui/animated-text';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail, ArrowDown, Download } from 'lucide-react';
-import { SiDiscord } from 'react-icons/si';
+import { SiDiscord, SiBuymeacoffee } from 'react-icons/si';
 
 export const Hero: React.FC = () => {
   return (
@@ -126,7 +126,8 @@ export const Hero: React.FC = () => {
             {[
               { icon: Github, href: 'https://github.com/ShreyJaiswal1' },
               { icon: Linkedin, href: 'https://linkedin.com/in/shreyjaiswal1' },
-              { icon: SiDiscord, href: 'https://discord.gg/ZVCB8EnRX2' }
+              { icon: SiDiscord, href: 'https://discord.gg/ZVCB8EnRX2' },
+              { icon: SiBuymeacoffee, href: 'https://payments.cashfree.com/forms/shrey' }
             ].map((social, i) => (
               <motion.a
                 key={i}

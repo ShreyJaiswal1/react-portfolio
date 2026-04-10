@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowUp, Sparkles } from 'lucide-react';
-import { SiDiscord } from 'react-icons/si';
+import { SiDiscord, SiBuymeacoffee } from 'react-icons/si';
 
 export const Footer: React.FC = () => {
   const year = new Date().getFullYear();
@@ -50,20 +50,16 @@ export const Footer: React.FC = () => {
               href="https://payments.cashfree.com/forms/shrey"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-5 px-8 py-5 bg-[#a3d4ec] border-2 border-foreground shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all group"
+              className="inline-flex items-center gap-5 px-8 py-5 bg-foreground border-2 border-foreground shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all group"
             >
-              <div className="relative w-14 h-14 bg-white border-2 border-foreground rounded-2xl flex items-center justify-center p-1.5 overflow-hidden rotate-[-5deg] group-hover:rotate-0 transition-transform">
-                <img 
-                  src="https://cashfree-checkoutcartimages-prod.cashfree.com/Gemini_Generated_Image_f9h0qwf9h0qwf9h0ia7fipokp6g0_prod.png" 
-                  alt="coffee" 
-                  className="w-full h-full object-cover rounded-xl"
-                />
+              <div className="relative w-14 h-14 bg-background border-2 border-foreground flex items-center justify-center rotate-[-5deg] group-hover:rotate-0 transition-transform shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]">
+                <SiBuymeacoffee className="w-8 h-8 text-foreground" />
               </div>
-              <div className="flex flex-col items-start leading-none">
-                <span className="text-2xl font-black uppercase tracking-tighter text-foreground mb-1">Buy me a coffee</span>
+              <div className="flex flex-col items-start leading-none pointer-events-none">
+                <span className="text-2xl font-black uppercase tracking-tighter text-background mb-1">Buy me a coffee</span>
                 <div className="flex items-center gap-1.5 opacity-80">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-foreground">Powered By Cashfree</span>
-                  <img src="https://cashfreelogo.cashfree.com/cashfreepayments/logosvgs/Group_4355.svg" alt="logo" className="w-4 h-4" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-background">Powered By Cashfree</span>
+                  <img src="https://cashfreelogo.cashfree.com/cashfreepayments/logosvgs/Group_4355.svg" alt="logo" className="w-4 h-4 brightness-0 opacity-80" />
                 </div>
               </div>
             </a>
